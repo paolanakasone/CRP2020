@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\COOP2020.Domain\COOP2020.Domain.csproj" />
+    <ProjectReference Include="..\COOP2020.Infrastructure\COOP2020.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
