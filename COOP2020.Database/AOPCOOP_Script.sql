@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema coop2020
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema coop2020
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `coop2020` DEFAULT CHARACTER SET utf8 ;
+USE `coop2020` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Seguridad.Rol`
+-- Table `coop2020`.`Seguridad.Rol`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Seguridad.Rol` (
+CREATE TABLE IF NOT EXISTS `coop2020`.`Seguridad.Rol` (
   `IdRol` INT NOT NULL,
   `Nombre` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`IdRol`),
@@ -26,9 +26,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Seguridad.Usuario`
+-- Table `coop2020`.`Seguridad.Usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Seguridad.Usuario` (
+CREATE TABLE IF NOT EXISTS `coop2020`.`Seguridad.Usuario` (
   `IdUsuario` INT NOT NULL AUTO_INCREMENT,
   `Hkey` VARCHAR(100) NULL,
   `Alias` VARCHAR(100) NULL,
@@ -40,16 +40,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Seguridad.Usuario` (
   INDEX `FK_Usuario_Rol_idx` (`IdRol` ASC) VISIBLE,
   CONSTRAINT `FK_Usuario_Rol`
     FOREIGN KEY (`IdRol`)
-    REFERENCES `mydb`.`Seguridad.Rol` (`IdRol`)
+    REFERENCES `coop2020`.`Seguridad.Rol` (`IdRol`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Seguridad.Modulo`
+-- Table `coop2020`.`Seguridad.Modulo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Seguridad.Modulo` (
+CREATE TABLE IF NOT EXISTS `coop2020`.`Seguridad.Modulo` (
   `IdModulo` INT NOT NULL,
   `Nombre` VARCHAR(100) NOT NULL,
   `IdModuloPadre` INT NULL,
@@ -57,28 +57,28 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Seguridad.Modulo` (
   INDEX `FK_Modulo_SubModulo_idx` (`IdModuloPadre` ASC) VISIBLE,
   CONSTRAINT `FK_Modulo_SubModulo`
     FOREIGN KEY (`IdModuloPadre`)
-    REFERENCES `mydb`.`Seguridad.Modulo` (`IdModulo`)
+    REFERENCES `coop2020`.`Seguridad.Modulo` (`IdModulo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Seguridad.RolModulo`
+-- Table `coop2020`.`Seguridad.RolModulo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Seguridad.RolModulo` (
+CREATE TABLE IF NOT EXISTS `coop2020`.`Seguridad.RolModulo` (
   `IdRol` INT NOT NULL,
   `IdModulo` INT NOT NULL,
   INDEX `FK_RoModulo_Rol_idx` (`IdRol` ASC) VISIBLE,
   INDEX `FK_RolModulo_Modulo_idx` (`IdModulo` ASC) VISIBLE,
   CONSTRAINT `FK_RoModulo_Rol`
     FOREIGN KEY (`IdRol`)
-    REFERENCES `mydb`.`Seguridad.Rol` (`IdRol`)
+    REFERENCES `coop2020`.`Seguridad.Rol` (`IdRol`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `FK_RolModulo_Modulo`
     FOREIGN KEY (`IdModulo`)
-    REFERENCES `mydb`.`Seguridad.Modulo` (`IdModulo`)
+    REFERENCES `coop2020`.`Seguridad.Modulo` (`IdModulo`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
