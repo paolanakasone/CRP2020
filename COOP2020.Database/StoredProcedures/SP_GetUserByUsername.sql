@@ -1,3 +1,4 @@
+DELIMITER //
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserByUsername`(
 IN Username VARCHAR(100)
 )
