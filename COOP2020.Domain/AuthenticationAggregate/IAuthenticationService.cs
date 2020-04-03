@@ -9,7 +9,7 @@ namespace COOP2020.Domain.AuthenticationAggregate
 {
     public interface IAuthenticationService
     {
-        Task<UserVM> CreateUser(UserToCreateVM user);
+        Task<UserCreatedVM> CreateUser(UserToCreateVM user);
         Task<UserVM> Login(UserLoginRequestVM user);
         Task<List<ModuleVM>> GetModulesByUser(string hkey);
         Task<List<RoleVM>> GetRoles();

@@ -16,16 +16,22 @@ namespace COOP2020.Infrastructure.Repository
         {
         }
 
-        public Task<User> CreateUser(User usuario)
-        {/*
+        public async Task<User> CreateUser(User usuario)
+        {
             using (var conn = _dbConnection)
             {
                 conn.Open();
-                var result = await conn.QueryAsync<CursoPredictionEntity>("GetCursosByParticipante",
-                    new { Id = idParticipante, IdEtapa = idEtapa, IdIdioma = idIdioma }, commandType: CommandType.StoredProcedure);
-                return result.ToList();
-            }*/
-            throw new NotImplementedException();
+                var result = await conn.QueryAsync<User>("CreateUser",
+                    new
+                    {
+                        P_Hkey = usuario.Hkey,
+                        P_Alias = usuario.Alias,
+                        P_PasswordSalt = usuario.PasswordSalt,
+                        P_PasswordHash = usuario.PasswordHash,
+                        P_IdRol = usuario.IdRol
+                    }, commandType: CommandType.StoredProcedure);
+                return result.FirstOrDefault();
+            }
         }
 
         public async Task<List<Domain.AuthenticationAggregate.Module>> GetModulesByUser(string hkey)
@@ -59,7 +65,7 @@ namespace COOP2020.Infrastructure.Repository
                     new { Username = username }, commandType: CommandType.StoredProcedure);
                 return result.FirstOrDefault();
             }
-            
+
         }
 
     }

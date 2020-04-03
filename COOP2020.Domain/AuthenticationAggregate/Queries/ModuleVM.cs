@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace COOP2020.Domain.AuthenticationAggregate.Queries
+﻿namespace COOP2020.Domain.AuthenticationAggregate.Queries
 {
     public class ModuleVM
     {

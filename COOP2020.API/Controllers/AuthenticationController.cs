@@ -41,6 +41,14 @@ namespace COOP2020.API.Controllers
         }
 
         [AllowAnonymous]
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateUser([FromBody] UserToCreateVM userToCreateVM)
+        {
+            var result = await _authenticationService.CreateUser(userToCreateVM);
+            return Ok(result);
+        }
+
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserLoginRequestVM userLoginRequestVM)
         {

@@ -20,9 +20,17 @@ namespace COOP2020.Infrastructure.Services
             _authenticationRepository = authenticationRepository;
             _mapper = mapper;
         }
-        public Task<UserVM> CreateUser(UserToCreateVM user)
+        public async Task<UserCreatedVM> CreateUser(UserToCreateVM userToCreate)
         {
-            throw new NotImplementedException();
+            var user = _mapper.Map<User>(userToCreate);
+            user.Hkey = Guid.NewGuid().ToString();
+            byte[] passwordSalt;
+            byte[] passwordHash;
+            userToCreate.Password.CreatePasswordHash(out passwordSalt, out passwordHash);
+            user.PasswordSalt = passwordSalt;
+            user.PasswordHash = passwordHash;
+            var userCreated = await _authenticationRepository.CreateUser(user);
+            return _mapper.Map<UserCreatedVM>(userCreated);
         }
 
         public async Task<List<ModuleVM>> GetModulesByUser(string hkey)

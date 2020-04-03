@@ -19,6 +19,8 @@ namespace COOP2020.API.Map
         private void CreateMapAuthentication()
         {
             CreateMap<User, UserVM>();
+            CreateMap<User, UserCreatedVM>();
+            CreateMap<UserToCreateVM, User>();
             CreateMap<Module, ModuleVM>();
             CreateMap<Role, RoleVM>();
         }
