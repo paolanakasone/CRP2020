@@ -1,34 +1,24 @@
-<link
-  rel="stylesheet"
-  href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-/>
 <div class="main">
   <div class="container">
     <div class="text-center">
       <div class="middle">
         <div id="login">
-          <form action="javascript:void(0);" method="get">
+          <form [formGroup]="loginForm"  (ngSubmit)="login()">
             <fieldset class="clearfix">
-              <p>
-                <span class="fa fa-user"></span
-                ><input type="text" Placeholder="Username" required />
-              </p>
-              <!-- JS because of IE support; better: placeholder="Username" -->
-              <p>
-                <span class="fa fa-lock"></span
-                ><input type="password" Placeholder="Password" required />
-              </p>
-              <!-- JS because of IE support; better: placeholder="Password" -->
+              <div [ngClass]="{'has-error': loginForm.get('username')?.errors && loginForm.get('username')?.touched}">
+                <span class="fa fa-user"></span><input type="text" formControlName="username" placeholder="Usuario" required/>
+                
+              </div>
+              <div [ngClass]="{'has-error': loginForm.get('password')?.errors && loginForm.get('password')?.touched}">
+                <span class="fa fa-lock"></span><input type="password" formControlName="password" placeholder="Contraseña" required/>
+                <span class="help-block" *ngIf="loginForm.get('password')?.errors?.minlength && loginForm.get('password').touched">
+                  El título debe tener al menos 4 caracteres de longitud
+                </span>
+              </div>
 
               <div>
-                <span
-                  style="width:48%; text-align:left;  display: inline-block;"
-                  ><a class="small-text" href="#">Forgot password?</a></span
-                >
-                <span
-                  style="width:50%; text-align:right;  display: inline-block;"
-                  ><input type="submit" value="Sign In"
-                /></span>
+                <span style="width:48%; text-align:left;  display: inline-block;"><a class="small-text" href="#">¿Olvidaste Contraseña?</a></span>
+                <span style="width:50%; text-align:right;  display: inline-block;"><input type="submit" value="Iniciar"/></span>
               </div>
             </fieldset>
             <div class="clearfix"></div>
@@ -36,7 +26,6 @@
 
           <div class="clearfix"></div>
         </div>
-        <!-- end login -->
         <div class="logo">
           LOGO
 

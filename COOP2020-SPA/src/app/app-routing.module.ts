@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { LoginComponent } from './auth/views/login/login.component';
 import { HomeComponent } from './shared/views/home/home.component';
+import { InicioComponent } from './shared/views/inicio/inicio.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
       runGuardsAndResolvers: 'always',
       canActivate: [AuthGuard],
       children: [
+        { path: 'inicio', component: InicioComponent}
       ]
   },
   { path: '**', redirectTo: '', pathMatch: 'full'}

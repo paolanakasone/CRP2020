@@ -5,14 +5,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { JwtModule } from "@auth0/angular-jwt";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { HomeComponent } from './views/home/home.component';
 import { NavComponent } from './views/nav/nav.component';
+import { InicioComponent } from './views/inicio/inicio.component';
+
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
 
 @NgModule({
   declarations: [
     HomeComponent,
-    NavComponent
+    NavComponent,
+    InicioComponent
   ],
   imports: [
     CommonModule,
@@ -21,18 +29,29 @@ import { NavComponent } from './views/nav/nav.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    /*JwtModule.forRoot({
+    JwtModule.forRoot({
        config: {
            tokenGetter: tokenGetter,
-           whitelistedDomains: ['localhost:64736'],
-           blacklistedRoutes: ['localhost:64736/api/auth']
+           whitelistedDomains: ['localhost:56950'],
+           blacklistedRoutes: ['localhost:56950/api/auth']
         }
-     }),*/
-    RouterModule
+     }),
+    RouterModule,
+    NgbModule
   ],
   exports: [
       HomeComponent,
-      NavComponent
+      NavComponent,
+      InicioComponent,
+      CommonModule,
+      BrowserModule,
+      HttpClientModule,
+      FormsModule,
+      ReactiveFormsModule,
+      BrowserAnimationsModule,
+      JwtModule,
+      RouterModule,
+      NgbModule
   ],
   providers: []
 })
