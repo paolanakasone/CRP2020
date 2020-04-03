@@ -1,12 +1,15 @@
-DELIMITER //
-CREATE PROCEDURE GetModulesByUsername(
-IN Hkey VARCHAR(100)
-)
+USE `coop2020`;
+DROP procedure IF EXISTS `GetModulesByUsername`;
+
+DELIMITER $$
+USE `coop2020`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetModulesByUsername`(IN Hkey VARCHAR(100))
 BEGIN
 	SELECT m.IdModulo, m.Nombre, m.IdModuloPadre 
-    FROM seguridad.modulo m inner join seguridad.rolmodulo rm 
-	on m.idmodulo=rm.idmodulo
-    inner join seguridad.usuario u
-    on u.idrol=rm.idrol
+    FROM `seguridad.modulo` m 
+    INNER JOIN `seguridad.rolmodulo` rm ON m.idmodulo = rm.idmodulo
+    INNER JOIN `seguridad.usuario` u ON u.idrol = rm.idrol
     WHERE u.Hkey = Hkey;
-END
+END$$
+
+DELIMITER ;
