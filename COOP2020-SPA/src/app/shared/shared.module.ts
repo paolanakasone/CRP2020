@@ -6,7 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from "@auth0/angular-jwt";
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 
 import { HomeComponent } from './views/home/home.component';
 import { NavComponent } from './views/nav/nav.component';
@@ -29,6 +30,7 @@ export function tokenGetter() {
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
     JwtModule.forRoot({
        config: {
            tokenGetter: tokenGetter,
@@ -51,7 +53,8 @@ export function tokenGetter() {
       BrowserAnimationsModule,
       JwtModule,
       RouterModule,
-      NgbModule
+      NgbModule,
+      BsDropdownModule
   ],
   providers: []
 })

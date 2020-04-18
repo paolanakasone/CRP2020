@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { AuthService } from 'src/app/auth/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { AlertifyService } from 'src/app/shared/services/alertify/alertify.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   login() {
     debugger;
     if (this.loginForm.invalid) {
+      this.alertify.error('No ha ingresado correctamente los datos de usuario/contraseña.');
       return;
     }
     this.usuario = Object.assign({}, this.loginForm.value);

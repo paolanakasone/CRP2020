@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../../auth/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { AlertifyService } from '../../services/alertify/alertify.service';
 
@@ -22,7 +22,7 @@ export class NavComponent implements OnInit {
   logout() {
     localStorage.removeItem('access_token');
     this.alertify.message('Hasta luego');
-    this.router.navigate(['']);
+    this.router.navigate(['login']);
   }
 
 }
