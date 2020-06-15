@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "COOP2020.Domain", "..\COOP2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "COOP2020.Infrastructure", "..\COOP2020.Infrastructure\COOP2020.Infrastructure.csproj", "{482D6415-BEBC-40CA-A6E0-5A2ACCFD32C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRP2020.API", "..\CRP2020.API\CRP2020.API.csproj", "{1E388D54-4D3E-4B35-85A2-FA6796E5B3C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{482D6415-BEBC-40CA-A6E0-5A2ACCFD32C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{482D6415-BEBC-40CA-A6E0-5A2ACCFD32C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{482D6415-BEBC-40CA-A6E0-5A2ACCFD32C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E388D54-4D3E-4B35-85A2-FA6796E5B3C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E388D54-4D3E-4B35-85A2-FA6796E5B3C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E388D54-4D3E-4B35-85A2-FA6796E5B3C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E388D54-4D3E-4B35-85A2-FA6796E5B3C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
